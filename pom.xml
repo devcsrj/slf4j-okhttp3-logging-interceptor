@@ -87,4 +87,12 @@
             </plugin> 
         </plugins>
     </build>
+    
+    <distributionManagement>
+        <repository>
+            <id>bintray-devcsrj-maven</id>
+            <name>devcsrj-maven</name>
+            <url>https://api.bintray.com/maven/devcsrj/maven/slf4j-okhttp3-logging-interceptor/;publish=1</url>
+        </repository>
+    </distributionManagement>
 </project>
