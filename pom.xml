@@ -9,6 +9,30 @@
     <version>3.0.0</version>
     <packaging>jar</packaging>
     
+    <inceptionYear>2017</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>devcsrj</id>
+            <name>Reijhanniel Jearl Campos</name>
+            <email>devcsrj@apache.org</email>
+            <url>devcsrj.github.io</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+    
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://github.com/devcsrj/slf4j-okhttp3-logging-interceptor.git</url>
+        </repository>
+    </repositories>
+    
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/devcsrj/slf4j-okhttp3-logging-interceptor/issues</url>
+    </issueManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -31,4 +55,36 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>3.0.rc1</version>
+                <configuration>
+                    <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                    <properties>
+                        <owner>Reijhanniel Jearl Campos</owner>
+                        <email>devcsrj@apache.org</email>
+                    </properties>
+                    <excludes>
+                        <exclude>**/LICENSE</exclude>
+                        <exclude>**/README</exclude>
+                        <exclude>pom.xml</exclude>
+                        <exclude>nbactions.xml</exclude>
+                        <exclude>nb-configuration.xml</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+        </plugins>
+    </build>
 </project>
