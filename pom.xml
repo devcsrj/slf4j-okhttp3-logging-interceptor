@@ -6,7 +6,7 @@
 
     <groupId>devcsrj.okhttp3</groupId>
     <artifactId>slf4j-logging-interceptor</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
     
     <inceptionYear>2017</inceptionYear>
