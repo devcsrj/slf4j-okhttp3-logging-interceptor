@@ -22,6 +22,7 @@ import static okhttp3.internal.http.StatusLine.HTTP_CONTINUE;
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Connection;
 import okhttp3.Headers;
@@ -128,10 +129,12 @@ public final class HttpLoggingInterceptor implements Interceptor {
             Headers headers = request.headers();
             for (int i = 0; i < headers.size(); i++) {
                 String name = headers.name( i );
+                String value = Objects.equals((name + "").trim(), "Authorization") ? "******" : headers.value(i);
 
-                // Skip headers from the request body as they are explicitly logged above.
-                if (!"Content-Type".equalsIgnoreCase( name ) && !"Content-Length".equalsIgnoreCase( name ))
-                    logger.info( "{}: {}", name, headers.value( i ) );
+				// Skip headers from the request body as they are explicitly
+				// logged above.
+				if (!"Content-Type".equalsIgnoreCase(name) && !"Content-Length".equalsIgnoreCase(name))
+					logger.info("{}: {}", name, value);
             }
 
             if (!logBody || !hasRequestBody)
