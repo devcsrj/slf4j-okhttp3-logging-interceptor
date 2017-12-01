@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>parent</artifactId>
+        <version>3.9.0</version>
+    </parent>
 
     <name>OkHttp Slf4j Logging Interceptor</name>
 
@@ -8,7 +16,7 @@
     <artifactId>slf4j-logging-interceptor</artifactId>
     <version>3.0.1</version>
     <packaging>jar</packaging>
-    
+
     <inceptionYear>2017</inceptionYear>
 
     <developers>
@@ -20,14 +28,14 @@
             <timezone>+8</timezone>
         </developer>
     </developers>
-    
+
     <repositories>
         <repository>
             <id>github</id>
             <url>https://github.com/devcsrj/slf4j-okhttp3-logging-interceptor.git</url>
         </repository>
     </repositories>
-    
+
     <issueManagement>
         <system>Github</system>
         <url>https://github.com/devcsrj/slf4j-okhttp3-logging-interceptor/issues</url>
@@ -39,7 +47,6 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <slf4j.version>1.7.21</slf4j.version>
-        <squareup.okhttp.version>3.0.0</squareup.okhttp.version>
     </properties>
 
     <dependencies>
@@ -51,11 +58,11 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>${squareup.okhttp.version}</version>
+            <version>${project.parent.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -100,25 +107,29 @@
                         <exclude>pom.xml</exclude>
                         <exclude>nbactions.xml</exclude>
                         <exclude>nb-configuration.xml</exclude>
+                        <exclude>.idea/</exclude>
+                        <exclude>checkstyle.xml</exclude>
                     </excludes>
                 </configuration>
                 <executions>
                     <execution>
                         <phase>process-sources</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>format</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin> 
+            </plugin>
         </plugins>
     </build>
-    
+
     <distributionManagement>
         <repository>
             <id>bintray-devcsrj-maven</id>
             <name>devcsrj-maven</name>
-            <url>https://api.bintray.com/maven/devcsrj/maven/slf4j-okhttp3-logging-interceptor/;publish=1</url>
+            <url>
+                https://api.bintray.com/maven/devcsrj/maven/slf4j-okhttp3-logging-interceptor/;publish=1
+            </url>
         </repository>
     </distributionManagement>
 </project>
