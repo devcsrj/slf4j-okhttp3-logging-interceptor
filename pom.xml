@@ -12,9 +12,9 @@
 
     <name>OkHttp Slf4j Logging Interceptor</name>
 
-    <groupId>devcsrj.okhttp3</groupId>
-    <artifactId>slf4j-logging-interceptor</artifactId>
-    <version>3.0.1</version>
+    <groupId>com.github.devcsrj</groupId>
+    <artifactId>slf4j-okhttp3-logging-interceptor</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <inceptionYear>2017</inceptionYear>
@@ -31,8 +31,8 @@
 
     <repositories>
         <repository>
-            <id>github</id>
-            <url>https://github.com/devcsrj/slf4j-okhttp3-logging-interceptor.git</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
