@@ -35,31 +35,19 @@ HttpLoggingInterceptor logging = new HttpLoggingInterceptor( yourLogger );
 Get via Maven:
 
 ```xml
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
           <groupId>com.github.devcsrj</groupId>
           <artifactId>slf4j-okhttp3-logging-interceptor</artifactId>
           <version>1.0.0</version>
         </dependency>
+        ...
     </dependencies>
 ```
 
 or via Gradle
 
 ```groovy
-   allprojects {
-        repositories {
-            jcenter()
-            maven { url "https://jitpack.io" }
-        }
-   }
    dependencies {
         compile 'com.github.devcsrj:slf4j-okhttp3-logging-interceptor:1.0.0'
    }
