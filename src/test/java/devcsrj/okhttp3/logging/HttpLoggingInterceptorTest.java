@@ -17,6 +17,8 @@ package devcsrj.okhttp3.logging;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okio.Buffer;
@@ -24,6 +26,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.junit.Assert.assertNotEquals;
 
 public class HttpLoggingInterceptorTest {
 
@@ -47,6 +51,10 @@ public class HttpLoggingInterceptorTest {
                 .url(server.url("/petstore.json"))
                 .build();
 
-        client.newCall(request).execute();
+        Response response = client.newCall(request).execute();
+        try (ResponseBody body = response.body()) {
+            InputStream inputStream = body.byteStream();
+            assertNotEquals(inputStream.available(), 0); // body must still be readable
+        }
     }
 }

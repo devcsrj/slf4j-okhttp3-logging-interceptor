@@ -89,15 +89,37 @@ public final class HttpLoggingInterceptor implements Interceptor {
     private static final Logger DEFAULT_LOGGER = LoggerFactory.getLogger(DEFAULT_LOGGER_NAME);
 
     private final Logger logger;
+    private final long peekBodySize;
 
     public HttpLoggingInterceptor() {
         this(DEFAULT_LOGGER);
     }
 
     public HttpLoggingInterceptor(Logger logger) {
+        this(logger, Long.MAX_VALUE);
+    }
+
+    /**
+     * @see #HttpLoggingInterceptor(Logger, long)
+     */
+    public HttpLoggingInterceptor(long peekBodySize) {
+        this(DEFAULT_LOGGER, peekBodySize);
+    }
+
+    /**
+     * Creates an Slf4j logging interceptor instance
+     *
+     * @param logger       The logger to be used
+     * @param peekBodySize The size to be logged when reading the response body. Defaults
+     *                     to {@code Long.MAX_VALUE}
+     */
+    public HttpLoggingInterceptor(Logger logger, long peekBodySize) {
         if (logger == null)
             throw new IllegalArgumentException("Can't use null logger");
+        if (peekBodySize < 0)
+            throw new IllegalArgumentException("peekBodySize can't be negative");
         this.logger = logger;
+        this.peekBodySize = peekBodySize;
     }
 
     /**
@@ -254,7 +276,7 @@ public final class HttpLoggingInterceptor implements Interceptor {
                 logger.info("<-- END HTTP (encoded body omitted)");
             else {
                 BufferedSource source = responseBody.source();
-                source.request(Long.MAX_VALUE); // Buffer the entire body.
+                source.request(peekBodySize);
                 Buffer buffer = source.buffer();
 
                 Charset charset = UTF8;
@@ -264,7 +286,7 @@ public final class HttpLoggingInterceptor implements Interceptor {
 
                 if (!isPlaintext(buffer)) {
                     logger.debug("");
-                    logger.debug("<-- END HTTP (binary {}-byte body omitted)", buffer.size());
+                    logger.debug("<-- END HTTP (binary {}-byte body omitted)", contentLength);
                     return response;
                 }
 
@@ -273,7 +295,7 @@ public final class HttpLoggingInterceptor implements Interceptor {
                     logger.debug(buffer.clone().readString(charset));
                 }
 
-                logger.debug("<-- END HTTP ({}-byte body)", buffer.size());
+                logger.debug("<-- END HTTP ({}-byte body)", contentLength);
             }
         }
 
