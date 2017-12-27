@@ -65,8 +65,7 @@ import static okhttp3.internal.http.StatusLine.HTTP_CONTINUE;
  *  <-- END HTTP
  * }</pre>
  * <p>
- * {@code INFO}: Logs request and response lines and their respective headers and bodies
- * (if present).
+ * {@code INFO}: Logs request and response lines and their respective headers.
  * <pre>{@code
  *  --> POST /greeting http/1.1
  *  Host: example.com
