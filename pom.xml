@@ -14,7 +14,7 @@
 
     <groupId>com.github.devcsrj</groupId>
     <artifactId>slf4j-okhttp3-logging-interceptor</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <inceptionYear>2017</inceptionYear>
