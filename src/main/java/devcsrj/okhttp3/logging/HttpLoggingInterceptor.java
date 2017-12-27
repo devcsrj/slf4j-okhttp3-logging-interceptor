@@ -107,7 +107,7 @@ public final class HttpLoggingInterceptor implements Interceptor {
     }
 
     /**
-     * Creates an Slf4j logging interceptor instance
+     * Creates an Slf4j logging interceptor instance.
      *
      * @param logger       The logger to be used
      * @param peekBodySize The size to be logged when reading the response body. Defaults
