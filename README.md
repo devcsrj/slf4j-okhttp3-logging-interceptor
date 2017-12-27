@@ -50,7 +50,7 @@ Get via Maven:
         <dependency>
           <groupId>com.github.devcsrj</groupId>
           <artifactId>slf4j-okhttp3-logging-interceptor</artifactId>
-          <version>1.0.0</version>
+          <version>1.0.1</version>
         </dependency>
         ...
     </dependencies>
@@ -60,7 +60,7 @@ or via Gradle
 
 ```groovy
    dependencies {
-        compile 'com.github.devcsrj:slf4j-okhttp3-logging-interceptor:1.0.0'
+        compile 'com.github.devcsrj:slf4j-okhttp3-logging-interceptor:1.0.1'
    }
 ```
 
